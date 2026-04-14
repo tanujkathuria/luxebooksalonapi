@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS SERVICE_ENTITY (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `description` VARCHAR(100) NOT NULL,
+    `price` INT NOT NULL,
+    `duration` INT NOT NULL,
+    `category` VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS booking (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `service_id` INT NOT NULL,
+    `date` DATE NOT NULL,
+    `time` VARCHAR(100) NOT NULL,
+    `customer_name` VARCHAR(100) NOT NULL,
+    `customer_phone` VARCHAR(20) NOT NULL,
+    FOREIGN KEY (service_id) REFERENCES SERVICE_ENTITY(id) ON DELETE CASCADE
+);
